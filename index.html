@@ -638,6 +638,24 @@ button.num:hover .n-open .i{transform:translate(2px,-2px)}
   html.js .rv{opacity:1;transform:none}
 }
 
+/* header: floating rounded semi-transparent pill (Анна 09.10) */
+.hdr{top:14px;left:0;right:0;border:0;background:none!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;pointer-events:none}
+.hdr.hide{transform:translateY(calc(-100% - 20px))}
+.hdr-in{pointer-events:auto;height:64px;max-width:calc(var(--max) - var(--pad) * 2);padding:0 10px 0 24px;border-radius:999px;background:rgba(18,15,28,.5);border:1px solid rgba(255,255,255,.1);-webkit-backdrop-filter:blur(18px) saturate(1.6);backdrop-filter:blur(18px) saturate(1.6);box-shadow:0 12px 40px -18px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.06);transition:background-color .3s,border-color .3s}
+.hdr.scrolled .hdr-in{background:rgba(14,12,22,.62);border-color:rgba(167,139,250,.18)}
+@media (max-width:1279px){.hdr-in{max-width:none;margin:0 var(--pad)}}
+@media (max-width:899px){.hdr{top:10px}.hdr-in{height:58px;padding:0 7px 0 18px;margin:0 12px}}
+.svc .sh{margin-bottom:0}
+.sv-note{margin:clamp(28px,3.5vw,44px) 0 22px;text-align:center;color:var(--tx);font:600 15px/1.4 var(--f-b)}
+.sv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.sv-t{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;min-height:150px;padding:22px 16px;border-radius:20px;border:1px solid var(--ln);background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012));transition:border-color .25s,background-color .25s,transform .3s var(--ease)}
+.sv-t:hover{border-color:rgba(167,139,250,.45);background-color:rgba(139,92,246,.06);transform:translateY(-3px)}
+.sv-i{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:rgba(139,92,246,.14);border:1px solid rgba(167,139,250,.25);color:var(--v3)}
+.sv-i .i{width:22px;height:22px}
+.sv-n{font:650 16px/1.3 var(--f-d);letter-spacing:-.01em;color:#fff;text-wrap:balance}
+@media (min-width:700px){.sv-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}}
+@media (min-width:1000px){.sv-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.sv-t{min-height:170px}.sv-n{font-size:17px}}
+@media (max-width:420px){.sv-t{min-height:130px;padding:18px 12px}.sv-n{font-size:14.5px}}
 /* ===== v3 edits 09.10: partners · results+cases · reviews · team (as on axyglobal.com) ===== */
 .ptn{padding:clamp(40px,6vw,72px) 0 clamp(8px,2vw,24px)}
 .ptn-h{text-align:center;color:var(--tx3);font:600 12.5px/1.2 var(--f-b);letter-spacing:.14em;text-transform:uppercase}
@@ -789,109 +807,13 @@ button.num:hover .n-open .i{transform:translate(2px,-2px)}
   <!-- ============ SERVICES ============ -->
   <section class="sec svc" id="services" aria-labelledby="sv-h">
     <div class="wrap">
-      <div class="sh rv">
+      <div class="sh center rv">
         <p class="eyebrow"><span class="mono">02</span><span>What we do</span></p>
         <h2 class="h2" id="sv-h">One team for the whole job — from product idea to steady sales</h2>
         <p class="sub">Amazon, TikTok Shop, Shopify — it doesn&#39;t matter where you sell. Take the full cycle or just one task.</p>
       </div>
-      <div class="rows" id="rows">
-        <article class="row row-amazon" id="svc-amazon" aria-labelledby="row-amazon">
-          <div class="row-txt rv">
-            <p class="row-lab"><span class="node" aria-hidden="true"></span><span class="mono">[ 01 / 04 ]</span><span class="row-tag"><svg class="i" aria-hidden="true" focusable="false"><use href="#b-amazon"/></svg>Amazon</span></p>
-            <h3 class="row-h" id="row-amazon">Launch your brand on Amazon — and make it sell</h3>
-            <p class="row-p">Have a product? We&#39;ll improve it and grow sales. No product yet? We&#39;ll find the best option for your budget and launch it from scratch.</p>
-            <ul class="svc-list">
-              <li><button class="sp" type="button" data-svc="0" aria-haspopup="dialog"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-shopping-bag"/></svg><span>Amazon Brand Launch &amp; Management</span><span class="px"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></span></button></li>
-              <li><button class="sp" type="button" data-svc="2" aria-haspopup="dialog"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-megaphone"/></svg><span>Amazon PPC Advertising</span><span class="px"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></span></button></li>
-              <li><button class="sp" type="button" data-svc="8" aria-haspopup="dialog"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-book-open"/></svg><span>Amazon KDP Book Launch</span><span class="px"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></span></button></li>
-            </ul>
-<p class="sv-hint"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-mouse-pointer-click"/></svg>Click a service to see what’s included</p>          </div>
-          <div class="mock-w rv d1" aria-hidden="true">
-            <div class="mock-glow"></div>
-            <div class="mock m-amz">
-              <div class="m-bar"><svg class="b" aria-hidden="true" focusable="false"><use href="#b-amazon"/></svg><span>Seller Central</span><span class="m-live"><i></i>Live</span></div>
-              <div class="m-prod">
-                <img src="img/case-humidifier.webp" alt="" width="800" height="600" loading="lazy" decoding="async">
-                <div><b>Mushroom humidifier</b><span class="stars">★★★★★<em>4.6</em></span><span class="m-badge"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-trending-up"/></svg>Top 10 for main keywords</span></div>
-              </div>
-              <div class="m-kpis"><div><small>Sales</small><b class="up">+400%</b></div><div><small>ACoS</small><b>18%</b></div></div>
-              <div class="m-chart">
-<div><span style="height:20%"></span><small>M1</small></div><div><span style="height:34%"></span><small>M2</small></div><div><span style="height:48%"></span><small>M3</small></div><div><span style="height:63%"></span><small>M4</small></div><div><span style="height:81%"></span><small>M5</small></div><div><span style="height:100%"></span><small>M6</small></div>              </div>
-            </div>
-            <p class="m-cap">Real case · humidifier on Amazon</p>
-          </div>
-        </article>
-        <article class="row row-tiktok" id="svc-tiktok" aria-labelledby="row-tiktok">
-          <div class="row-txt rv">
-            <p class="row-lab"><span class="node" aria-hidden="true"></span><span class="mono">[ 02 / 04 ]</span><span class="row-tag"><svg class="i" aria-hidden="true" focusable="false"><use href="#b-tiktok"/></svg>TikTok Shop</span></p>
-            <h3 class="row-h" id="row-tiktok">Sales on TikTok Shop every day</h3>
-            <p class="row-p">We set up the shop, find creators, make videos and run ads — so your product doesn&#39;t just sit on TikTok, it sells.</p>
-            <ul class="svc-list">
-              <li><button class="sp" type="button" data-svc="9" aria-haspopup="dialog"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-video"/></svg><span>TikTok Shop Management</span><span class="px"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></span></button></li>
-            </ul>
-          </div>
-          <div class="mock-w rv d1" aria-hidden="true">
-            <div class="mock-glow"></div>
-            <div class="mock m-tt">
-              <div class="phone">
-                <img src="img/case-beauty.webp" alt="" width="800" height="600" loading="lazy" decoding="async">
-                <span class="tt-views"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-play"/></svg>5M views</span>
-                <span class="tt-side"><svg class="i hrt" aria-hidden="true" focusable="false"><use href="#i-heart"/></svg><svg class="i" aria-hidden="true" focusable="false"><use href="#i-message-circle"/></svg><svg class="i" aria-hidden="true" focusable="false"><use href="#i-send"/></svg></span>
-                <div class="tt-card"><div><small>Beauty brand</small><b>Sold out in 48 h</b></div><span class="tt-shop">Shop</span></div>
-              </div>
-              <div class="tt-stat s1"><b>$100k+</b><small>in 48 hours</small></div>
-              <div class="tt-stat s2"><b>12%</b><small>conversion</small></div>
-            </div>
-            <p class="m-cap">Real case · beauty brand on TikTok Shop</p>
-          </div>
-        </article>
-        <article class="row row-store" id="svc-store" aria-labelledby="row-store">
-          <div class="row-txt rv">
-            <p class="row-lab"><span class="node" aria-hidden="true"></span><span class="mono">[ 03 / 04 ]</span><span class="row-tag"><svg class="i" aria-hidden="true" focusable="false"><use href="#b-shopify"/></svg>Own store &amp; ads</span></p>
-            <h3 class="row-h" id="row-store">Your own Shopify store — and buyers for it</h3>
-            <p class="row-p">A store that doesn&#39;t depend on marketplaces, plus Meta and Google ads and social media that bring customers.</p>
-            <ul class="svc-list">
-              <li><button class="sp" type="button" data-svc="4" aria-haspopup="dialog"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-store"/></svg><span>Shopify Store Creation</span><span class="px"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></span></button></li>
-              <li><button class="sp" type="button" data-svc="3" aria-haspopup="dialog"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-target"/></svg><span>Meta &amp; Google Ads</span><span class="px"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></span></button></li>
-              <li><button class="sp" type="button" data-svc="7" aria-haspopup="dialog"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-smartphone"/></svg><span>SMM: Strategy, Content, Growth</span><span class="px"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></span></button></li>
-            </ul>
-          </div>
-          <div class="mock-w rv d1" aria-hidden="true">
-            <div class="mock-glow"></div>
-            <div class="mock m-st">
-              <div class="br">
-                <div class="br-bar"><i></i><i></i><i></i><span>brainrichkids.com</span></div>
-                <img src="img/shop-brainrich.webp" alt="" width="751" height="438" loading="lazy" decoding="async">
-              </div>
-              <div class="st-ads"><svg class="b" aria-hidden="true" focusable="false"><use href="#b-meta"/></svg><svg class="b" aria-hidden="true" focusable="false"><use href="#b-google"/></svg><svg class="b" aria-hidden="true" focusable="false"><use href="#b-instagram"/></svg><svg class="b" aria-hidden="true" focusable="false"><use href="#b-tiktok"/></svg><span>Ads &amp; social</span></div>
-              <div class="st-chip c1"><span class="ci"><svg class="b" aria-hidden="true" focusable="false"><use href="#b-shopify"/></svg></span><span><small>Built from scratch</small><b>Custom Shopify store</b></span></div>
-              <div class="st-chip c2"><span class="ci"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-trending-up"/></svg></span><span><small>Kids furniture</small><b>+180% website inquiries</b></span></div>
-            </div>
-            <p class="m-cap">Real cases · Shopify</p>
-          </div>
-        </article>
-        <article class="row row-start" id="svc-start" aria-labelledby="row-start">
-          <div class="row-txt rv">
-            <p class="row-lab"><span class="node" aria-hidden="true"></span><span class="mono">[ 04 / 04 ]</span><span class="row-tag"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-rocket"/></svg>Start &amp; content</span></p>
-            <h3 class="row-h" id="row-start">Everything for the start: company, factory, content</h3>
-            <p class="row-p">We register a US company, find a verified factory in China and create photos, videos and 3D that sell.</p>
-            <ul class="svc-list">
-              <li><button class="sp" type="button" data-svc="1" aria-haspopup="dialog"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-building-2"/></svg><span>US Company Registration</span><span class="px"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></span></button></li>
-              <li><button class="sp" type="button" data-svc="5" aria-haspopup="dialog"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-factory"/></svg><span>China Factory Sourcing</span><span class="px"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></span></button></li>
-              <li><button class="sp" type="button" data-svc="6" aria-haspopup="dialog"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-camera"/></svg><span>AXY Studio: Photo, Video, 3D, Design</span><span class="px"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg></span></button></li>
-            </ul>
-          </div>
-          <div class="mock-w rv d1" aria-hidden="true">
-            <div class="mock-glow"></div>
-            <div class="mock m-start">
-              <div class="sm"><span class="ci"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-building-2"/></svg></span><span><b>US company</b><small>LLC or Corporation · EIN · documents</small></span><span class="ok"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span></div>
-              <div class="sm"><span class="ci"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-factory"/></svg></span><span><b>Factory in China</b><small>Top-5 compared · CE / FDA / ISO checked</small></span><span class="ok"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span></div>
-              <div class="sm"><span class="ci"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-camera"/></svg></span><span><b>AXY Studio</b><small>Photo · video · 3D · design</small></span><span class="ok"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span></div>
-            </div>
-            <p class="m-cap">What we do · Start &amp; content</p>
-          </div>
-        </article>
-      </div>
+      <p class="sv-note rv">Click on a service to learn more.</p>
+      <div class="sv-grid rv d1"><button class="sv-t" type="button" data-svc="0" aria-haspopup="dialog"><span class="sv-i"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-shopping-bag"/></svg></span><span class="sv-n">Amazon Brand Launch &amp; Management</span></button><button class="sv-t" type="button" data-svc="1" aria-haspopup="dialog"><span class="sv-i"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-building-2"/></svg></span><span class="sv-n">US Company Registration</span></button><button class="sv-t" type="button" data-svc="2" aria-haspopup="dialog"><span class="sv-i"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-megaphone"/></svg></span><span class="sv-n">Amazon PPC Advertising</span></button><button class="sv-t" type="button" data-svc="3" aria-haspopup="dialog"><span class="sv-i"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-target"/></svg></span><span class="sv-n">Meta &amp; Google Ads</span></button><button class="sv-t" type="button" data-svc="4" aria-haspopup="dialog"><span class="sv-i"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-store"/></svg></span><span class="sv-n">Shopify Store Creation</span></button><button class="sv-t" type="button" data-svc="5" aria-haspopup="dialog"><span class="sv-i"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-factory"/></svg></span><span class="sv-n">China Factory Sourcing</span></button><button class="sv-t" type="button" data-svc="6" aria-haspopup="dialog"><span class="sv-i"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-camera"/></svg></span><span class="sv-n">AXY Studio: Photo, Video, 3D, Design</span></button><button class="sv-t" type="button" data-svc="7" aria-haspopup="dialog"><span class="sv-i"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-smartphone"/></svg></span><span class="sv-n">SMM: Strategy, Content, Growth</span></button><button class="sv-t" type="button" data-svc="8" aria-haspopup="dialog"><span class="sv-i"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-book-open"/></svg></span><span class="sv-n">Amazon KDP Book Launch</span></button><button class="sv-t" type="button" data-svc="9" aria-haspopup="dialog"><span class="sv-i"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-video"/></svg></span><span class="sv-n">TikTok Shop Management</span></button></div>
     </div>
   </section>
 
@@ -1252,7 +1174,7 @@ button.num:hover .n-open .i{transform:translate(2px,-2px)}
       </nav>
       <div class="ft-col">
         <h3>Services</h3>
-        <ul><li><a href="#svc-amazon">Amazon</a></li><li><a href="#svc-tiktok">TikTok Shop</a></li><li><a href="#svc-store">Own store &amp; ads</a></li><li><a href="#svc-start">Start &amp; content</a></li><li><a href="#audit">Free audit</a></li></ul>
+        <ul><li><a href="#services">Amazon</a></li><li><a href="#services">TikTok Shop</a></li><li><a href="#services">Own store &amp; ads</a></li><li><a href="#services">Start &amp; content</a></li><li><a href="#audit">Free audit</a></li></ul>
       </div>
       <div class="ft-col">
         <h3>Contacts</h3>
