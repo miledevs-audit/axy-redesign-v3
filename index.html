@@ -701,6 +701,27 @@ button.num:hover .n-open .i{transform:translate(2px,-2px)}
 @media (min-width:1000px){.tm-g{grid-template-columns:1.05fr 1fr}}
 @media (max-width:599px){.ptn-row{gap:20px 26px}.ptn-row .b{width:36px;height:36px}.tc-m small{display:none}.ch{height:130px}.mq-t{animation-duration:45s}}
 @media (prefers-reduced-motion:reduce){.mq-t{animation:none}.mq{overflow-x:auto}}
+
+/* ===== 09.10 правки (3-тє коло) ===== */
+/* 6.3 блюр унизу вікна кейсу/послуги — видно, що далі є текст */
+.dlg-b::after{content:'';position:sticky;bottom:0;display:block;height:72px;margin:-72px calc(-1 * clamp(20px,4vw,40px)) 0;pointer-events:none;background:linear-gradient(180deg,rgba(15,13,22,0),rgba(15,13,22,.92) 80%);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);-webkit-mask-image:linear-gradient(180deg,transparent,#000 55%);mask-image:linear-gradient(180deg,transparent,#000 55%);opacity:0;transition:opacity .25s}
+.dlg-b.more::after{opacity:1}
+.dc-b::after{margin:-72px 0 0}
+/* 6.4 скріни чатів — вікно по центру екрана і на телефоні */
+.dlg.dlg-chat[open]{align-items:center;padding:14px}
+.dlg-chat .dlg-in{border-radius:24px;max-height:min(88vh,920px)}
+/* 6.5 коло команди крутиться, обличчя лишаються рівно */
+.tc-l{position:absolute;inset:0;animation:tc-spin 48s linear infinite}
+.tc-m{transform-origin:50% 8cqw;animation:tc-keep 48s linear infinite}
+.tc:hover .tc-l,.tc:hover .tc-m{animation-play-state:paused}
+@keyframes tc-spin{to{transform:rotate(360deg)}}
+@keyframes tc-keep{from{transform:translate(-50%,-8cqw) rotate(0deg)}to{transform:translate(-50%,-8cqw) rotate(-360deg)}}
+@media (prefers-reduced-motion:reduce){.tc-l,.tc-m{animation:none}}
+/* 6.6 стрілка вгору над футером */
+.totop-w{position:relative;z-index:2;display:flex;justify-content:center;margin:clamp(10px,3vw,30px) 0 -26px}
+.totop{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:rgba(255,255,255,.55);background:rgba(18,15,28,.55);border:1px solid rgba(196,181,253,.18);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:.6;transition:opacity .25s,color .25s,border-color .25s,transform .3s var(--ease)}
+.totop .i{width:20px;height:20px}
+.totop:hover,.totop:focus-visible{opacity:1;color:#fff;border-color:rgba(196,181,253,.5);transform:translateY(-3px)}
 </style>
 </head>
 <body>
@@ -749,16 +770,11 @@ button.num:hover .n-open .i{transform:translate(2px,-2px)}
         <p class="lead"><span>Not selling yet — we&#39;ll help you start.</span><span>Already selling — we&#39;ll help you sell more.</span><span><b>The first step is a free audit.</b></span></p>
       </div>
       <div class="ctas">
-        <a class="btn btn-w" href="#start">Get a free audit <svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+        <a class="btn btn-w" href="#audit">Get a free audit <svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
         <a class="btn btn-o" href="#results">See results</a>
       </div>
-      <ul class="chips" aria-label="Results">
-        <li class="chip"><span class="ci"><svg class="i" aria-hidden="true" focusable="false"><use href="#b-amazon"/></svg></span><span><small>Amazon · Humidifier</small><b>+400% sales in 6 months</b></span></li>
-        <li class="chip"><span class="ci"><svg class="i" aria-hidden="true" focusable="false"><use href="#b-tiktok"/></svg></span><span><small>TikTok Shop · Beauty brand</small><b>$100k+ in 48 hours</b></span></li>
-        <li class="chip"><span class="ci"><svg class="i" aria-hidden="true" focusable="false"><use href="#b-shopify"/></svg></span><span><small>Shopify · brainrichkids.com</small><b>Store built from scratch</b></span></li>
-        <li class="chip"><span class="ci"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-factory"/></svg></span><span><small>China · Factory sourcing</small><b>Top-5 factories compared</b></span></li>
-      </ul>
-      <a class="scroll-cue" href="#start"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow-down-right"/></svg>Scroll down</a>
+      
+      <a class="scroll-cue" href="#services"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow-down-right"/></svg>Scroll down</a>
     </div>
   </section>
 
@@ -770,45 +786,13 @@ button.num:hover .n-open .i{transform:translate(2px,-2px)}
   </section>
 
   <!-- ============ START / AUDIT PICKER ============ -->
-  <section class="sec start" id="start" aria-labelledby="st-h">
-    <div class="wrap">
-      <div class="sh center rv">
-        <p class="eyebrow"><span class="mono">01</span><span>Free audit</span></p>
-        <h2 class="h2" id="st-h">Where are you now?</h2>
-        <p class="sub">Pick your situation — we&#39;ll tell you exactly what we&#39;ll check for free.</p>
-      </div>
-      <div class="pick">
-        <article class="pk card spot rv d0">
-          <div class="pk-top"><span class="pk-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-rocket"/></svg></span><span class="pk-free">Free</span></div>
-          <p class="pk-n">01</p>
-          <h3 class="pk-t">I don&#39;t sell yet</h3>
-          <p class="pk-p">We&#39;ll check whether your product will be in demand on Amazon.</p>
-          <button class="btn btn-o" type="button" data-topic="new">Check my product <svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></button>
-        </article>
-        <article class="pk card spot rv d1">
-          <div class="pk-top"><span class="pk-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-trending-up"/></svg></span><span class="pk-free">Free</span></div>
-          <p class="pk-n">02</p>
-          <h3 class="pk-t">I already sell</h3>
-          <p class="pk-p">We&#39;ll analyze your listing and show how to increase sales.</p>
-          <button class="btn btn-o" type="button" data-topic="amazon">Analyze my listing <svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></button>
-        </article>
-        <article class="pk card spot rv d2">
-          <div class="pk-top"><span class="pk-ic"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-store"/></svg></span><span class="pk-free">Free</span></div>
-          <p class="pk-n">03</p>
-          <h3 class="pk-t">I have a Shopify store</h3>
-          <p class="pk-p">A developer will review your site and advise how to increase sales.</p>
-          <button class="btn btn-o" type="button" data-topic="shopify">Review my store <svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></button>
-        </article>
-      </div>
-      <p class="pk-note rv"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-zap"/></svg>Takes a minute: leave your contact and our expert will get in touch.</p>
-    </div>
-  </section>
+  
 
   <!-- ============ SERVICES ============ -->
   <section class="sec svc" id="services" aria-labelledby="sv-h">
     <div class="wrap">
       <div class="sh center rv">
-        <p class="eyebrow"><span class="mono">02</span><span>What we do</span></p>
+        <p class="eyebrow"><span class="mono">01</span><span>What we do</span></p>
         <h2 class="h2" id="sv-h">One team for the whole job — from product idea to steady sales</h2>
         <p class="sub">Amazon, TikTok Shop, Shopify — it doesn&#39;t matter where you sell. Take the full cycle or just one task.</p>
       </div>
@@ -822,7 +806,7 @@ button.num:hover .n-open .i{transform:translate(2px,-2px)}
     <div class="orb o1 soft" aria-hidden="true"></div>
     <div class="wrap">
       <div class="sh rv">
-        <p class="eyebrow"><span class="mono">03</span><span>How it works</span></p>
+        <p class="eyebrow"><span class="mono">02</span><span>How it works</span></p>
         <h2 class="h2" id="hw-h">Four simple steps</h2>
         <p class="sub">You always know what happens next.</p>
       </div>
@@ -860,7 +844,7 @@ button.num:hover .n-open .i{transform:translate(2px,-2px)}
     <div class="wrap">
       <div class="cs-head">
         <div class="sh rv">
-          <p class="eyebrow"><span class="mono">04</span><span>Results · cases 01—10</span></p>
+          <p class="eyebrow"><span class="mono">03</span><span>Results · cases 01—10</span></p>
           <h2 class="h2" id="cs-h">Real numbers, not promises</h2>
           <p class="sub">Real projects: what the task was, what we did and what came out of it.</p>
         </div>
@@ -1030,7 +1014,7 @@ button.num:hover .n-open .i{transform:translate(2px,-2px)}
   <section class="sec rev" id="reviews" aria-labelledby="rv-h">
     <div class="wrap">
       <div class="sh center rv">
-        <p class="eyebrow"><span class="mono">05</span><span>Reviews</span></p>
+        <p class="eyebrow"><span class="mono">04</span><span>Reviews</span></p>
         <h2 class="h2" id="rv-h">What clients say</h2>
         <p class="sub">Real reviews from our working chats</p>
       </div>
@@ -1044,7 +1028,7 @@ button.num:hover .n-open .i{transform:translate(2px,-2px)}
     <div class="orb o2" aria-hidden="true"></div><div class="orb o3 soft" aria-hidden="true"></div>
     <div class="wrap tm-g">
       <div class="tm-c rv">
-        <p class="eyebrow"><span class="mono">06</span><span>About us</span></p>
+        <p class="eyebrow"><span class="mono">05</span><span>About us</span></p>
         <h2 class="h2" id="tm-h">We are active sellers, so we know every step</h2>
         <ul class="tm-li"><li>10+ years in e-commerce</li><li>Helped 1000+ sellers</li><li>Experience on Amazon, Shopify, TikTok Shop, AliExpress, Ozon, Wildberries, Yandex Market, etc.</li><li>Founder <b>Azat Shakurov</b> — CEO Axy Company</li></ul>
         <ul class="tm-st"><li><b>10+</b><small>years in e-commerce</small></li><li><b>1000+</b><small>sellers helped</small></li></ul>
@@ -1052,7 +1036,7 @@ button.num:hover .n-open .i{transform:translate(2px,-2px)}
       <div class="tc rv d1">
         <div class="tc-ring" aria-hidden="true"></div>
         <div class="tc-c"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-handshake"/></svg><b>Partner</b></div>
-        <ul class="tc-l"><li class="tc-m" style="--a:-90deg"><span class="tc-p"><img src="img/team-azat.webp" alt="Azat" width="160" height="160" loading="lazy" decoding="async"></span><b>Azat</b><small>CEO</small></li><li class="tc-m" style="--a:-30deg"><span class="tc-p"><img src="img/team-max-s.webp" alt="Max" width="160" height="160" loading="lazy" decoding="async"></span><b>Max</b><small>Management &amp; Scale</small></li><li class="tc-m" style="--a:30deg"><span class="tc-p"><img src="img/team-ivan-s.webp" alt="Ivan" width="160" height="160" loading="lazy" decoding="async"></span><b>Ivan</b><small>Project Manager</small></li><li class="tc-m" style="--a:90deg"><span class="tc-p"><img src="img/team-evgeniy-s.webp" alt="Evgeniy" width="160" height="160" loading="lazy" decoding="async"></span><b>Evgeniy</b><small>Shopify Tech Lead</small></li><li class="tc-m" style="--a:150deg"><span class="tc-p"><img src="img/team-nastya-s.webp" alt="Nastya" width="160" height="160" loading="lazy" decoding="async"></span><b>Nastya</b><small>SMM &amp; Content</small></li><li class="tc-m" style="--a:210deg"><span class="tc-p"><img src="img/team-aida-s.webp" alt="Aida" width="160" height="160" loading="lazy" decoding="async"></span><b>Aida</b><small>Videographer</small></li></ul>
+        <ul class="tc-l"><li class="tc-m" style="--a:-90deg"><span class="tc-p"><img src="img/team-azat.webp" alt="Azat" width="160" height="160" loading="lazy" decoding="async"></span><b>Azat</b><small>CEO</small></li><li class="tc-m" style="--a:-30deg"><span class="tc-p"><img src="img/team-max-s.webp" alt="Max" width="160" height="160" loading="lazy" decoding="async"></span><b>Max</b><small>Management &amp; Scale</small></li><li class="tc-m" style="--a:30deg"><span class="tc-p"><img src="img/team-ivan-s.webp" alt="Ivan" width="160" height="160" loading="lazy" decoding="async"></span><b>Ivan</b><small>Project Manager</small></li><li class="tc-m" style="--a:90deg"><span class="tc-p"><img src="img/team-evgeniy-2.webp" alt="Evgeniy" width="160" height="160" loading="lazy" decoding="async"></span><b>Evgeniy</b><small>Shopify Tech Lead</small></li><li class="tc-m" style="--a:150deg"><span class="tc-p"><img src="img/team-nastya-s.webp" alt="Nastya" width="160" height="160" loading="lazy" decoding="async"></span><b>Nastya</b><small>SMM &amp; Content</small></li><li class="tc-m" style="--a:210deg"><span class="tc-p"><img src="img/team-aida-s.webp" alt="Aida" width="160" height="160" loading="lazy" decoding="async"></span><b>Aida</b><small>Videographer</small></li></ul>
       </div>
     </div>
   </section>
@@ -1061,7 +1045,7 @@ button.num:hover .n-open .i{transform:translate(2px,-2px)}
   <section class="sec faq" id="faq" aria-labelledby="fq-h">
     <div class="wrap faq-grid">
       <div class="faq-l rv">
-        <p class="eyebrow"><span class="mono">07</span><span>FAQ</span></p>
+        <p class="eyebrow"><span class="mono">06</span><span>FAQ</span></p>
         <h2 class="h2" id="fq-h">Questions &amp; answers</h2>
         <p class="sub">Didn&#39;t find your question? Message us — we&#39;ll answer.</p>
         <div class="btns">
@@ -1108,7 +1092,7 @@ button.num:hover .n-open .i{transform:translate(2px,-2px)}
     <div class="orb o5 soft" aria-hidden="true"></div>
     <div class="wrap au-grid">
       <div class="au-l rv">
-        <p class="eyebrow"><span class="mono">08</span><span>Free audit</span></p>
+        <p class="eyebrow"><span class="mono">07</span><span>Free audit</span></p>
         <h2 class="h2" id="fm-h">Get a free audit</h2>
         <p class="sub">Leave your contacts — our expert will get in touch, look at your situation and show how to grow sales: on your own or with our team.</p>
         <ul class="au-points">
@@ -1139,7 +1123,7 @@ button.num:hover .n-open .i{transform:translate(2px,-2px)}
             <div class="fld" data-req><label for="f-budget">How much are you ready to invest in growth right now?</label>
               <select id="f-budget" name="budget" required aria-describedby="e-budget"><option value="" disabled selected>Select a budget</option><option value="&lt;1000">Up to $1,000</option><option value="&lt;5000">Up to $5,000</option><option value="5000-10000">$5,000 – $10,000</option><option value="10000-25000">$10,000 – $25,000</option><option value="25000-50000">$25,000 – $50,000</option><option value="&gt;50000">More than $50,000</option></select>
               <span class="err" id="e-budget">Please fill in this field</span></div>
-            <div class="fld chk" data-req><label><input type="checkbox" name="privacy" required aria-describedby="e-priv"><span class="box"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>I have read the <a href="https://axyglobal.com/privacy-policy-en.html" target="_blank" rel="noopener">privacy policy</a></span></label><span class="err" id="e-priv">Please confirm you have read the privacy policy</span></div>
+            <div class="fld chk" data-req><label><input type="checkbox" name="privacy" checked required aria-describedby="e-priv"><span class="box"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>I have read the <a href="https://axyglobal.com/privacy-policy-en.html" target="_blank" rel="noopener">privacy policy</a></span></label><span class="err" id="e-priv">Please confirm you have read the privacy policy</span></div>
             <button class="btn btn-w f-submit" type="submit">Send request <svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></button>
             <p class="f-demo">Design preview: the form doesn’t send any data in this demo.</p>
           </form>
@@ -1154,6 +1138,8 @@ button.num:hover .n-open .i{transform:translate(2px,-2px)}
     </div>
   </section>
 </main>
+
+<div class="totop-w"><a class="totop" href="#top" aria-label="Back to top"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg></a></div>
 
 <footer class="ft" id="contacts">
   <div class="ft-arc" aria-hidden="true"></div>
@@ -1666,6 +1652,18 @@ button.num:hover .n-open .i{transform:translate(2px,-2px)}
   function clr(e){ var w = e.target.closest('[data-req]'); if (w && w.classList.contains('invalid') && !bad(w)) { w.classList.remove('invalid'); e.target.removeAttribute('aria-invalid'); } }
   form.addEventListener('input', clr); form.addEventListener('change', clr);
   $('.f-again').addEventListener('click', function(){ form.reset(); fsvc.hidden = true; form.hidden = false; $('.f-ok').hidden = true; $('.form-card').style.minHeight = ''; form.elements.name.focus(); });
+})();
+</script>
+
+<script>
+(function(){
+  function upd(b){ b.classList.toggle('more', b.scrollHeight - b.scrollTop - b.clientHeight > 6); }
+  document.querySelectorAll('.dlg-b').forEach(function(b){
+    b.addEventListener('scroll', function(){ upd(b); }, { passive: true });
+    var dlg = b.closest('dialog');
+    if (dlg) new MutationObserver(function(){ if (dlg.open) { upd(b); setTimeout(function(){ upd(b); }, 80); setTimeout(function(){ upd(b); }, 450); } }).observe(dlg, { attributes: true, attributeFilter: ['open'] });
+    b.querySelectorAll('img').forEach(function(i){ i.addEventListener('load', function(){ upd(b); }); });
+  });
 })();
 </script>
 </body>
